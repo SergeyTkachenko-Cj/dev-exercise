@@ -6,7 +6,7 @@
 		flex-direction: column;
 		width: 500px;
 		height: 500px;
-		background: dimgrey;
+		border: 1.5px solid dimgrey;
 	} 
 
 	.flex-cell {
@@ -14,18 +14,33 @@
 	}
 
 	#flex-child-1 {
-		height: 30%;
-		background: green;
+		height: 20%;
+		padding: 10px;
+		border-bottom: 1.5px solid black;
+		background: dodgerblue;
 	}
 
 	#flex-child-2 {
-		height: 65%;
-		background: yellow; 
+		height: 75%;
 	}
 
 	#flex-child-3 {
+		display: flex;
 		height: 15%;
-		background: red; 
+		padding-left: 10px;
+		border-top: 1.5px solid black;
+	}
+
+	#twit {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 20%;
+	}
+
+	#bird { 
+		width: 50%; 
+		height: 50%;
 	}
 
 	.flex-span {
@@ -33,22 +48,35 @@
 		flex-direction: column;
 		justify-content: center;
 		width: 100%;
+		color: white;
 	}
 
 	#flex-span-1 {
 		width: 20%;
+		border: 1.5px solid dimgrey;
+		text-align: center;
+		background: url(face.JPG);
+		background-size: 100%;
+		background-position-y: 30%;
 	}
 
 	#flex-span-2 {
 		width: 60%;
+		/*border: 1.5px solid black;*/
+		text-align: center;
 	}
 
 	#flex-span-2 div {
-		text-align: center;
+		display: flex;
+		flex-direction: column;
+		padding-left: 5px;
+		text-align: left;
 	}
 
 	#flex-span-3 {
 		width: 20%;
+		/*border: 1.5px solid black;*/
+		text-align: center;
 	}
 
 	#email {
@@ -58,19 +86,23 @@
 <body>
 	<div id="flex-container">
 		<div id="flex-child-1" class="flex-cell">
-			<div id="flex-span-1" class="flex-span">child-one</div>
+			<div id="flex-span-1" class="flex-span"></div>
 			<div id="flex-span-2" class="flex-span">
 				<div>
 					<span id="email">@CJTaylor</span>
+					<span>flexbox providence</span>
 				</div>
 			</div>
-			<div id="flex-span-3" class="flex-span">child-three</div>
+			<div id="flex-span-3" class="flex-span">online</div>
 		</div>
 		<div id="flex-child-2" class="flex-cell">
 			<span class="flex-span">child-one</span>
 		</div>
 		<div id="flex-child-3" class="flex-cell">
-			<span class="flex-span">child-two</span>
+			<span id="twit">
+				<img id="bird" src="twitter.png">
+				<span>QUITTER</span>
+			</span>
 		</div>
 	</div>
 </body>
