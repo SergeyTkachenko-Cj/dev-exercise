@@ -16,7 +16,8 @@
 	#flex-child-1 {
 		height: 20%;
 		padding: 10px;
-		border-bottom: 1.5px solid black;
+		border-bottom: 1px solid black;
+		color: white;
 		background: dodgerblue;
 	}
 
@@ -24,11 +25,69 @@
 		height: 75%;
 	}
 
+	#col-1 {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 60%;
+		margin: 10px 0 10px 10px;
+		border: 1px solid black;
+	}
+
+	.bubble-left, .bubble-right {
+		position: relative;
+		padding: 3px;
+		border-radius: 10px;
+		color: white;
+		background:	dodgerblue;
+	}
+
+	.bubble-left::before {
+		position: absolute;
+		top: calc(50% - 5px);
+		left: -9px;
+		border: 5px solid;
+		border-color: transparent dodgerblue transparent transparent;
+		content: "";
+	}
+
+	.bubble-right::after {
+		position: absolute;
+		top: calc(50% - 5px);
+		right: -9px;
+		border: 5px solid;
+		border-color: transparent transparent transparent dodgerblue;
+		content: "";
+	}
+
+	.msg-left, .msg-right {
+		padding: 10px;
+	}
+
+	.msg-right {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	#inpt {
+		height: 10%;
+		margin: 5px;
+		border: 1px solid black;
+		border-radius: 5px;
+		outline: none;
+	}
+
+	#col-2 {
+		width: 40%;
+		margin: 10px;
+		border: 1px solid black;
+	}
+
 	#flex-child-3 {
 		display: flex;
 		height: 15%;
 		padding-left: 10px;
-		border-top: 1.5px solid black;
+		border-top: 1px solid black;
 	}
 
 	#twit {
@@ -40,7 +99,7 @@
 
 	#bird { 
 		width: 50%; 
-		height: 50%;
+		height: 70%;
 	}
 
 	.flex-span {
@@ -48,7 +107,6 @@
 		flex-direction: column;
 		justify-content: center;
 		width: 100%;
-		color: white;
 	}
 
 	#flex-span-1 {
@@ -62,7 +120,6 @@
 
 	#flex-span-2 {
 		width: 60%;
-		/*border: 1.5px solid black;*/
 		text-align: center;
 	}
 
@@ -75,7 +132,6 @@
 
 	#flex-span-3 {
 		width: 20%;
-		/*border: 1.5px solid black;*/
 		text-align: center;
 	}
 
@@ -96,7 +152,22 @@
 			<div id="flex-span-3" class="flex-span">online</div>
 		</div>
 		<div id="flex-child-2" class="flex-cell">
-			<span class="flex-span">child-one</span>
+			<span id="col-1" class="flex-span">
+				<span class="msg-left">
+					<span class="bubble-left">Hi! Are you a flexbox God?</span>
+				</span>
+				<span class="msg-right">
+					<span class="bubble-right">Yep, its me</span>
+				</span>
+				<span class="msg-left">
+					<span class="bubble-left">Can you flex my boxes?</span>
+				</span>
+				<span class="msg-right">
+					<span class="bubble-right">Sure thing girl</span>
+				</span>
+				<input type="text" name="txt" id="inpt" autofocus>
+			</span>
+			<span id="col-2" class="flex-span">child-one</span>
 		</div>
 		<div id="flex-child-3" class="flex-cell">
 			<span id="twit">
