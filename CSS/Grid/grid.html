@@ -1,0 +1,55 @@
+<!DOCTYPE><html>
+<html>
+<head>
+	<title>CSS Grid</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<style>
+	.grid-box {
+		display: grid;
+		grid-template-rows: repeat(2, 200px);
+		grid-template-columns: repeat(2, 1fr);
+		/*grid-row-start: 2;
+		grid-row-end: 3; 
+		grid-column-start: 1;
+		grid-column-end: 2;*/ 
+		grid-area: 2 / 2 / 3 / 3;
+		/*grid-column-start: 1;
+		grid-column-end: 4;*/
+		grid-gap: .5em;
+	}
+
+	.grid-item {
+		display: block;
+		/*width: 450px;*/
+		/*height: 50px;*/
+		text-align: center;
+		border: 1.5px solid black;
+	}
+
+	#one {
+		background: lightgrey;
+	}
+
+	#two {
+		background: darkgrey;
+	}
+
+	#three {
+		background: grey;
+	}
+
+	#four {
+		background: dimgrey;
+	}
+</style>
+<body>
+	<div class="grid-box">
+		<span id="one" class="grid-item">ITEM ONE BLAH BLAH BLAH BLAH BLAH</span>
+		<span id="two" class="grid-item">ITEM TWO</span>
+		<span id="three" class="grid-item">ITEM THREE</span>
+		<span id="four" class="grid-item">ITEM FOUR</span>
+	</div>
+</body>
+
+</html>
