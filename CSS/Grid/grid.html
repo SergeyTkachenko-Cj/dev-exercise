@@ -7,48 +7,87 @@
 <style>
 	.grid-box {
 		display: grid;
-		grid-template-rows: repeat(2, 200px);
-		grid-template-columns: repeat(2, 1fr);
-		/*grid-row-start: 2;
-		grid-row-end: 3; 
-		grid-column-start: 1;
-		grid-column-end: 2;*/ 
-		grid-area: 2 / 2 / 3 / 3;
-		/*grid-column-start: 1;
-		grid-column-end: 4;*/
-		grid-gap: .5em;
+		/*grid-template-rows: [top] 
+							100px 
+							[middle-top] 
+							100px 
+							[middle-center]
+							100px
+							[middle-bottom]
+							100px
+							[bottom];
+		grid-template-columns: [left] 1fr [middle-left] 1fr [middle-right] 1.5fr [right];*/
+		grid-template-rows: repeat(4, 100px);
+		grid-template-areas: "blah two flexing"
+							 "boxing-posing five flexing"
+							 "boxing-posing six seven"
+							 "eight eight eight";
+		grid-gap: 10px;
 	}
 
 	.grid-item {
 		display: block;
-		/*width: 450px;*/
-		/*height: 50px;*/
 		text-align: center;
 		border: 1.5px solid black;
 	}
 
-	#one {
+	#one, #five {
 		background: lightgrey;
 	}
 
-	#two {
+	#two, #six {
 		background: darkgrey;
 	}
 
-	#three {
+	#three, #seven {
 		background: grey;
 	}
 
-	#four {
+	#three {
+		grid-row: flexing; 
+		grid-column: flexing; 
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#four, #eight {
 		background: dimgrey;
+	}
+
+	#four {
+		grid-row: boxing-posing;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	#eight {
+		grid-area: eight;
+	}
+
+	.flex-item {
+		padding: 5px;
+		color: #fff;
+		border: 1.5px solid #fff;
+		border-radius: 10px;
 	}
 </style>
 <body>
 	<div class="grid-box">
-		<span id="one" class="grid-item">ITEM ONE BLAH BLAH BLAH BLAH BLAH</span>
+		<span id="one" class="grid-item">BLAH BLAH BLAH BLAH BLAH</span>
 		<span id="two" class="grid-item">ITEM TWO</span>
-		<span id="three" class="grid-item">ITEM THREE</span>
-		<span id="four" class="grid-item">ITEM FOUR</span>
+		<span id="three" class="grid-item">
+			<span class="flex-item">FLEXING</span>
+		</span>
+		<span id="four" class="grid-item">
+			<span class="flex-item">BOXING</span>
+			<span class="flex-item">POSING</span>
+		</span>
+		<span id="five" class="grid-item">ITEM FIVE</span>
+		<span id="six" class="grid-item">ITEM SIX</span>
+		<span id="seven" class="grid-item">ITEM SEVEN</span>
+		<span id="eight" class="grid-item">ITEM EIGHT</span>
 	</div>
 </body>
 
