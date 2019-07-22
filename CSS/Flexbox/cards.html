@@ -16,7 +16,8 @@
 	#flex-child-1 {
 		height: 20%;
 		padding: 10px;
-		border-bottom: 1.5px solid black;
+		border-bottom: 1px solid black;
+		color: white;
 		background: dodgerblue;
 	}
 
@@ -24,11 +25,140 @@
 		height: 75%;
 	}
 
+	#col-1 {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 65%;
+		margin: 10px 0 10px 10px;
+		border: 1px solid black;
+	}
+
+	.bubble-left, .bubble-right {
+		position: relative;
+		padding: 3px;
+		border-radius: 10px;
+		color: white;
+		background:	dodgerblue;
+	}
+
+	.bubble-right {
+		background: steelblue;
+	}
+
+	.face-icon {
+		width: 24px;
+		height: 24px;
+		margin-bottom: 5px;
+		border-radius: 50%;
+		background: url(face.JPG);
+		background-size: 100%;
+		background-position-y: 30%;
+	}
+
+	.bubble-left::before {
+		position: absolute;
+		top: calc(50% - 5px);
+		left: -9px;
+		border: 5px solid;
+		border-color: transparent dodgerblue transparent transparent;
+		content: "";
+	}
+
+	/*.bubble-left::after {
+		position: absolute;
+		top: calc(50% - 12px);
+		right: -30px;
+		width: 24px;
+		height: 24px;
+		content: "";
+		border-radius: 50%;
+		background: url(face.JPG);
+		background-size: 100%;
+		background-position-y: 30%;
+	}*/
+
+	.bubble-right::after {
+		position: absolute;
+		top: calc(50% - 5px);
+		right: -9px;
+		border: 5px solid;
+		border-color: transparent transparent transparent steelblue;
+		content: "";
+	}
+
+	/*.bubble-right::before {
+		position: absolute;
+		top: calc(50% - 12px);
+		left: -30px;
+		width: 24px;
+		height: 24px;
+		content: "";
+		border-radius: 50%;
+		background: url(face.JPG);
+		background-size: 100%;
+		background-position-y: 30%;
+	}*/
+
+	.msg-left, .msg-right {
+		padding: 7px 10px;
+	}
+
+	.msg-right {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.right-center {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+
+	#inpt {
+		height: 10%;
+		margin: 5px;
+		border: 1px solid black;
+		border-radius: 5px;
+		outline: none;
+	}
+
+	#col-2 {
+		display: flex;
+		flex-direction: column;
+		width: 35%;
+		margin: 10px;
+		border: 1px solid black;
+	}
+
+	.online-lot, .offline-lot {
+		display: flex;
+		height: 10%;
+	}
+
+	.offline-lot {
+		opacity: 0.5;
+	}
+
+	.pic {
+		width: 24px;
+		height: 24px;
+		margin: 2px 5px 0 5px;
+		border-radius: 50%;
+		background: url(face.JPG);
+		background-size: 100%;
+		background-position-y: 30%;
+	}
+
+	.info {
+		align-self: center;
+	}
+
 	#flex-child-3 {
 		display: flex;
 		height: 15%;
 		padding-left: 10px;
-		border-top: 1.5px solid black;
+		border-top: 1px solid black;
 	}
 
 	#twit {
@@ -40,7 +170,7 @@
 
 	#bird { 
 		width: 50%; 
-		height: 50%;
+		height: 70%;
 	}
 
 	.flex-span {
@@ -48,7 +178,6 @@
 		flex-direction: column;
 		justify-content: center;
 		width: 100%;
-		color: white;
 	}
 
 	#flex-span-1 {
@@ -62,7 +191,6 @@
 
 	#flex-span-2 {
 		width: 60%;
-		/*border: 1.5px solid black;*/
 		text-align: center;
 	}
 
@@ -75,7 +203,6 @@
 
 	#flex-span-3 {
 		width: 20%;
-		/*border: 1.5px solid black;*/
 		text-align: center;
 	}
 
@@ -96,7 +223,71 @@
 			<div id="flex-span-3" class="flex-span">online</div>
 		</div>
 		<div id="flex-child-2" class="flex-cell">
-			<span class="flex-span">child-one</span>
+			<span id="col-1" class="flex-span">
+				<span class="msg-left">
+					<div class="face-icon"></div>
+					<span class="bubble-left">Hi! Are you a flexbox God?</span>
+				</span>
+				<span class="msg-right">
+					<div class="right-center">
+						<div class="face-icon"></div>
+						<span class="bubble-right">Yep, its me</span>
+					</div>
+				</span>
+				<span class="msg-left">
+					<div class="face-icon"></div>
+					<span class="bubble-left">Can you flex my boxes?</span>
+				</span>
+				<span class="msg-right">
+					<div class="right-center">
+						<div class="face-icon"></div>
+						<span class="bubble-right">Sure thing bro</span>
+					</div>
+				</span>
+				<input type="text" name="txt" id="inpt" autofocus>
+			</span>
+			<span id="col-2">
+				<span class="online-lot">
+					<span class="pic"></span>
+					<span class="info">CJ Taylor</span>
+				</span>
+				<span class="online-lot">
+					<span class="pic"></span>
+					<span class="info">Cee Jay Taylor</span>
+				</span>
+				<span class="offline-lot">
+					<span class="pic"></span>
+					<span class="info">C Jay Taylor</span>
+				</span>
+				<span class="offline-lot">
+					<span class="pic"></span>
+					<span class="info">Cee J Taylor</span>
+				</span>
+				<span class="offline-lot">
+					<span class="pic"></span>
+					<span class="info">CJT</span>
+				</span>
+				<span class="offline-lot">
+					<span class="pic"></span>
+					<span class="info">Cee Jay T</span>
+				</span>
+				<span class="offline-lot">
+					<span class="pic"></span>
+					<span class="info">CeeJAY Taylor</span>
+				</span>
+				<span class="offline-lot">
+					<span class="pic"></span>
+					<span class="info">Cj</span>
+				</span>
+				<span class="offline-lot">
+					<span class="pic"></span>
+					<span class="info">Mr. Taylor</span>
+				</span>
+				<span class="offline-lot">
+					<span class="pic"></span>
+					<span class="info">Cee Taylor Jay</span>
+				</span>
+			</span>
 		</div>
 		<div id="flex-child-3" class="flex-cell">
 			<span id="twit">
