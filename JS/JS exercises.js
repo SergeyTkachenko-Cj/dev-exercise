@@ -1,44 +1,23 @@
-var collection = {
-    "2548": {
-      "album": "Slippery When Wet",
-      "artist": "Bon Jovi",
-      "tracks": [ 
-        "Let It Rock", 
-        "You Give Love a Bad Name" 
-      ]
-    },
-    "2468": {
-      "album": "1999",
-      "artist": "Prince",
-      "tracks": [ 
-        "1999", 
-        "Little Red Corvette" 
-      ]
-    },
-    "1245": {
-      "artist": "Robert Palmer",
-      "tracks": [ ]
-    },
-    "5439": {
-      "album": "ABBA Gold"
-    }
-};
+'use strict';
 
-var collectionCopy = JSON.parse(JSON.stringify(collection));
+function vowelsAndConsonants(s) {
+  let rgx = new RegExp('[a|o|e|i|u|y]');
+  let conson = [];
+    // for (let i = 0; i < s.length; i++) {
+    //   rgx.test(s[i]) ? console.log(s[i]) : true
+    // }
 
-  function updateRecords(id, prop, value) {
-    
-    // collection.hasOwnProperty(id) ? collection[id].hasOwnProperty(prop) ? collection[id][prop] = ;
+    // for (let i = 0; i < s.length; i++) {
+    //   rgx.test(s[i]) ? true : console.log(s[i])
+    // }
 
-    if (collection.hasOwnProperty(id)) {
-        if (prop === "tracks") { collection[id][prop].push(value) }
-        else {
-          collection[id][prop] = value;
-        }
-    }
+    s.split('').forEach(function(i) {
+        rgx.test(i) ? console.log(i) : conson.push(i)
+    });
 
-    // collection[id].hasOwnProperty("album");
-    return collection;
-  }
+    conson.forEach(function(i) {
+        console.log(i);
+    });
+}
 
-console.log(updateRecords(5439, "artist", "ABBA"));
+vowelsAndConsonants("javascriptloops");
