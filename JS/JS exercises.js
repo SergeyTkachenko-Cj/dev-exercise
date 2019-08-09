@@ -1,14 +1,16 @@
 'use strict';
 
-const factorialRecursion = (f) => f === 1 ? f : factorialRecursion(f - 1) * f
-
-const factorialLoop = (f) => {
-	let res = 1;
-		for (let i = f; i > 0; i--) res *= i;
-	return res
+const getSecondLargestArrayNumberSet = (nums) => {
+    nums.sort((a, b) => b - a);
+    const noDuplicatesArr = Array.from(new Set(nums));
+    return noDuplicatesArr[1]
 }
 
-console.log(factorialRecursion(4));
-console.log(factorialLoop(4));
+const getSecondLargestArrayNumberFilterIncludes = (nums) => {
+	const arr = nums.filter((item, index) => !nums.includes(item, index + 1));
+    arr.sort((a, b) => b - a);
+    return arr[1]
+}
 
-
+console.log(getSecondLargestArrayNumberSet([4,6,9,13,1,13]));
+console.log(getSecondLargestArrayNumberFilterIncludes([4,6,9,13,1,13]));
