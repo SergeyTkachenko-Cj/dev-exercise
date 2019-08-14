@@ -1,16 +1,41 @@
-'use strict';
+const getTempOfTmrw = (avgTemperatures) => { // object destructuring
+  const { tomorrow: tempOfTomorrow } = avgTemperatures;
+  return tempOfTomorrow;
+};
 
-const getSecondLargestArrayNumberSet = (nums) => {
-    nums.sort((a, b) => b - a);
-    const noDuplicatesArr = Array.from(new Set(nums));
-    return noDuplicatesArr[1]
-}
 
-const getSecondLargestArrayNumberFilterIncludes = (nums) => {
-	const arr = nums.filter((item, index) => !nums.includes(item, index + 1));
-    arr.sort((a, b) => b - a);
-    return arr[1]
-}
+const varSwap = (a, b) => { // array destructuring
+  let A = a;
+  let B = b;
+  [B, A] = [A, B];
+  return [A, B];
+};
 
-console.log(getSecondLargestArrayNumberSet([4,6,9,13,1,13]));
-console.log(getSecondLargestArrayNumberFilterIncludes([4,6,9,13,1,13]));
+
+const destrucSlice = (array) => { // array slice method with destructuring
+  const [,, ...arr] = array;
+  return arr;
+};
+
+
+const destrFuncParam = (m) => { // object destructuring as function parameters
+  const obj = {
+    mass: 20,
+    velocity: 2,
+    power: 5,
+    speed: 3 ** 8,
+    accelaration: 3,
+  };
+
+  obj.mass = m;
+
+  const energy = ({ mass, speed }) => mass * (speed ** 2); // e = mc2
+
+  return energy(obj);
+};
+
+
+console.log(getTempOfTmrw({ today: 77.5, tomorrow: 79 }));
+console.log(varSwap(1, 2));
+console.log(destrucSlice([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+console.log(destrFuncParam(50));
