@@ -1,27 +1,14 @@
 
-const multiPromises = (() => {
-  const states = [
-    'new_york',
-    'california',
-    'ohio',
-    'illinois',
-  ];
+var uniqueInOrder = function(iterable) {
+    
+    let answer = [];
+      for (let i = -1; i < iterable.length - 1; i++) {
+        if (iterable[i] !== iterable[i + 1]) {
+          answer.push(iterable[i + 1]);
+        }
+      }
 
-  const concat = [];
+    return answer
+}
 
-  const responses = states.map(
-    (item) => fetch(`https://api.openbrewerydb.org/breweries?per_page=1&by_state=${item}`),
-  );
-
-  Promise.all(responses)
-    .then((resps) => Promise.all(resps.map((item) => item.json())))
-    .then((resps) => resps.map((ite) => ite.map(
-      (it) => console.log(
-        '%c%s%c : %c%s%c (%c%s%c)',
-        'color:orange', it.state,
-        'background:inherit;', 'color:yellow; font-style: italic;', it.name,
-        'background:inherit;', 'color:orange;', it.city,
-        'background:inherit;',
-      ),
-    )));
-})();
+console.log(uniqueInOrder([1,2,2,3,3]));
