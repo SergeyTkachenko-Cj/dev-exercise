@@ -1,14 +1,11 @@
 
-var uniqueInOrder = function(iterable) {
-    
-    let answer = [];
-      for (let i = -1; i < iterable.length - 1; i++) {
-        if (iterable[i] !== iterable[i + 1]) {
-          answer.push(iterable[i + 1]);
-        }
-      }
+async function f() {
+  const git = await fetch('https://api.github.com/users/SergeyTkachenko-Cj');
+  const json = await git.json();
 
-    return answer
+  const img = document.createElement('img');
+  img.src = json.avatar_url;
+  document.body.append(img);
 }
 
-console.log(uniqueInOrder([1,2,2,3,3]));
+f();
