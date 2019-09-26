@@ -1,11 +1,13 @@
 
-async function f() {
-  const git = await fetch('https://api.github.com/users/SergeyTkachenko-Cj');
-  const json = await git.json();
-
-  const img = document.createElement('img');
-  img.src = json.avatar_url;
-  document.body.append(img);
+function divisors(integer) {
+  const res = [];
+  for (let i = 2; i < integer; i++) {
+    const divide = integer / i;
+    if (!(Math.trunc(divide) - divide)) res.push(divide);
+  }
+  return res.length ? res.reverse() : `${integer} is prime`;
 }
 
-f();
+console.log(divisors(12)); // should return [2,3,4,6]
+// console.log(divisors(25)); // should return [5]
+// console.log(divisors(13)); // should return "13 is prime"
