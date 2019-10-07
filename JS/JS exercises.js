@@ -1,16 +1,8 @@
 
-String.prototype.camelCase = function () {
-  const x = this.split(' ');
-  const z = x.map((i) => {
-    const q = i.split('').map((item, index) => (index ? item : item.toUpperCase()));
-    return q.join('');
-  });
+function factorial(n)
+{
+  if (n < 0 || n > 12) throw new RangeError();
+  else return n > 0 ? factorial(n - 1) * n : 1
+}
 
-  return z.join('');
-};
-
-console.log('hello case '.camelCase());
-
-
-// "hello case".camelCase() => HelloCase;
-// "camel case word".camelCase() => CamelCaseWord;
+console.log(factorial(5));
