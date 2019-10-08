@@ -1,8 +1,4 @@
 
-function factorial(n)
-{
-  if (n < 0 || n > 12) throw new RangeError();
-  else return n > 0 ? factorial(n - 1) * n : 1
-}
+const multiplyAll = arr => int => arr.map(i => i * int);
 
-console.log(factorial(5));
+console.log(multiplyAll([1, 2, 3])(2));
