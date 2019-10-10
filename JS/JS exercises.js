@@ -1,15 +1,7 @@
 
-function squaresNeeded(grains) {
-  if (!grains) return 0;
-
-  let count = 1;
-
-  for (let i = 1; i < grains; i++) {
-    i *= 2;
-    count++;
-  }
-
-  return count;
+function firstNonRepeated(s) {
+  const answer = s.split('').filter((item, index) => index === s.lastIndexOf(item) && index === s.indexOf(item));
+  return answer[0] || null
 }
 
-console.log(squaresNeeded(3));
+console.log(firstNonRepeated('test'));
