@@ -1,10 +1,6 @@
 
 function addLetters(...letters) {
-  const cat = [...letters];
-  const res = cat.map((i) => i.charCodeAt(0) - 96);
-  const x = eval(res.join('+'));
-  const y = x % 26 || 26;
-  return String.fromCharCode(y + 96);
+  return String.fromCharCode((eval([...letters].map(i => i.charCodeAt(0) - 96).join('+')) % 26 || 26) + 96)
 }
 
-console.log(addLetters('d', 'w', 'd', 'n', 'i', 'o', 'e'));
+console.log(addLetters("o", "r", "c", "b", "r", "h", "n", "g", "s", "c"));
