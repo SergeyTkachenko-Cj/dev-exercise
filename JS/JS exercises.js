@@ -1,6 +1,8 @@
+// return an array of numbers (that are a power of 2)
+// for which the input "n" is the sum
 
-function addLetters(...letters) {
-  return String.fromCharCode((eval([...letters].map(i => i.charCodeAt(0) - 96).join('+')) % 26 || 26) + 96)
-}
+const powers = n => {
+  return n.toString(2).split('').reverse().map((a, b) => +a ? Math.pow(2, b) : 0).filter(i => i)
+};
 
-console.log(addLetters("o", "r", "c", "b", "r", "h", "n", "g", "s", "c"));
+console.log(powers(22));
