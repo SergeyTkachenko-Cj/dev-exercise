@@ -1,9 +1,13 @@
-
 "use strict";
 exports.__esModule = true;
-function inviteMoreWomen(L) {
-    return L.reduce(function (acc, cur) { return acc + cur; }) > 0 ? true : false;
+function sumTriangularNumbers(n) {
+    var x = [0];
+    for (var i = 1; i <= n; i++) {
+        x.push(i + x[i - 1]);
+    }
+    return x.reduce(function (acc, cur) { return acc + cur; });
 }
-exports.inviteMoreWomen = inviteMoreWomen;
-console.log(inviteMoreWomen([1, -1, 1]));
-console.log(inviteMoreWomen([-1, -1, -1]));
+exports.sumTriangularNumbers = sumTriangularNumbers;
+console.log(sumTriangularNumbers(6)); // 56
+console.log(sumTriangularNumbers(34)); // 7140
+console.log(sumTriangularNumbers(-291)); // 0
