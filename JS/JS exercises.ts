@@ -1,15 +1,15 @@
 
-export function getSum(a: number, b: number): number {
-let strt: number = a < b ? a : b;
-  let fin: number = strt === a ? b : a;
-  let res: number = 0;
-    for (strt; strt <= fin; strt++) {
-      res += strt;
+const nbYear = (p0, percent, aug, p) => {
+  let z:number = 0;
+    const x = (arg: any): number => {
+      z++;
+      p0 = arg + (arg * (percent)/100) + aug;
+      return p0 < p ? x(p0) : p0
     }
-  return res
+    x(p0);
+  return z
 }
 
-console.log(getSum(5, -1)); // 14
-console.log(getSum(0, 1)); // 0 + 1 = 1
-console.log(getSum(1, 1)); // 1 Since both are same
-console.log(getSum(-1, 2)); // -1 + 0 + 1 + 2 = 2
+console.log(nbYear(1500, 5, 100, 5000)); // 15
+console.log(nbYear(1500000, 2.5, 10000, 2000000)); // 10
+console.log(nbYear(1500000, 0.0, 10000, 2000000)); // 50

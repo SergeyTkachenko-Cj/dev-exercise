@@ -1,16 +1,13 @@
-"use strict";
-exports.__esModule = true;
-function getSum(a, b) {
-    var strt = a < b ? a : b;
-    var fin = strt === a ? b : a;
-    var res = 0;
-    for (strt; strt <= fin; strt++) {
-        res += strt;
-    }
-    return res;
-}
-exports.getSum = getSum;
-console.log(getSum(5, -1)); // 14
-console.log(getSum(0, 1)); // 0 + 1 = 1
-console.log(getSum(1, 1)); // 1 Since both are same
-console.log(getSum(-1, 2)); // -1 + 0 + 1 + 2 = 2
+var nbYear = function (p0, percent, aug, p) {
+    var z = 0;
+    var x = function (arg) {
+        z++;
+        p0 = arg + (arg * (percent) / 100) + aug;
+        return p0 < p ? x(p0) : p0;
+    };
+    x(p0);
+    return z;
+};
+console.log(nbYear(1500, 5, 100, 5000)); // 15
+console.log(nbYear(1500000, 2.5, 10000, 2000000)); // 10
+console.log(nbYear(1500000, 0.0, 10000, 2000000)); // 50
