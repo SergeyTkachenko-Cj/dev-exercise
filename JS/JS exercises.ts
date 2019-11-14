@@ -1,17 +1,10 @@
 
-function* fib(): Generator {
-  let cur: number = 0;
-  let next: number = 1;
-    while (true) {
-      next = next + cur;
-      cur = next - cur;
-      yield next + cur
-    }
+function sumOfDifferences(arr: Array<number>): number {
+  return eval(arr.sort((a, b) => b - a)
+                 .map((item, index) => item - arr[index + 1])
+                 .slice(0, arr.length - 1)
+                 .join('+')
+              ) || 0
 }
 
-const gen = fib();
-
-console.log(gen.next().value); 
-console.log(gen.next().value);
-console.log(gen.next().value); 
-console.log(gen.next().value);
+console.log(sumOfDifferences([2, 1, 10])); // 9
