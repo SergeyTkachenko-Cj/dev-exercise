@@ -1,8 +1,17 @@
 
-export default function isSquare(n: number): boolean {
-  return Math.sqrt(n) % 1 === 0
-};
+function* fib(): Generator {
+  let cur: number = 0;
+  let next: number = 1;
+    while (true) {
+      next = next + cur;
+      cur = next - cur;
+      yield next + cur
+    }
+}
 
-console.log(isSquare(-1));  // false
-console.log(isSquare(25));  // true
-console.log(isSquare(26));  // false
+const gen = fib();
+
+console.log(gen.next().value); 
+console.log(gen.next().value);
+console.log(gen.next().value); 
+console.log(gen.next().value);
