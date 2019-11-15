@@ -1,16 +1,15 @@
 "use strict";
 exports.__esModule = true;
-function bmi(weight, height) {
-    var bmi = weight / Math.pow(height, 2);
-    if (bmi <= 18.5)
-        return "Underweight";
-    else if (bmi <= 25.0)
-        return "Normal";
-    else if (bmi <= 30.0)
-        return "Overweight";
-    else if (bmi > 30)
-        return "Obese";
-    return 'undefined';
+function vertMirror(strng) {
+    return strng.split('\n').map(function (i) { return i.split('').reverse().join(''); }).join('\n');
 }
-exports.bmi = bmi;
-console.log(bmi(90, 1.80));
+exports.vertMirror = vertMirror;
+function horMirror(strng) {
+    return strng.split('\n').reverse().join('\n');
+}
+exports.horMirror = horMirror;
+function oper(fct, s) {
+    return fct(s);
+}
+exports.oper = oper;
+console.log(oper(vertMirror, "hSgdHQ\nHnDMao\nClNNxX\niRvxxH\nbqTVvA\nwvSyRu"));
