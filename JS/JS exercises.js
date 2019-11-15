@@ -1,15 +1,8 @@
 "use strict";
 exports.__esModule = true;
-function vertMirror(strng) {
-    return strng.split('\n').map(function (i) { return i.split('').reverse().join(''); }).join('\n');
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate) {
+    return new Date(currentDate) <= new Date(expirationDate) && enteredCode === correctCode;
 }
-exports.vertMirror = vertMirror;
-function horMirror(strng) {
-    return strng.split('\n').reverse().join('\n');
-}
-exports.horMirror = horMirror;
-function oper(fct, s) {
-    return fct(s);
-}
-exports.oper = oper;
-console.log(oper(vertMirror, "hSgdHQ\nHnDMao\nClNNxX\niRvxxH\nbqTVvA\nwvSyRu"));
+exports.checkCoupon = checkCoupon;
+console.log(checkCoupon('123', '123', 'September 5, 2014', 'October 1, 2014')); // true
+console.log(checkCoupon('123a', '123', 'September 5, 2014', 'October 1, 2014')); // false

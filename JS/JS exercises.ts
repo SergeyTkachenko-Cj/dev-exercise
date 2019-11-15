@@ -1,14 +1,7 @@
 
-export function vertMirror(strng: string) {
-  return strng.split('\n').map(i => i.split('').reverse().join('')).join('\n')
+export function checkCoupon(enteredCode: string, correctCode: string, currentDate: string, expirationDate: string): boolean {  
+  return new Date(currentDate) <= new Date(expirationDate) && enteredCode === correctCode
 }
 
-export function horMirror(strng: string) {
-  return strng.split('\n').reverse().join('\n')
-}
-
-export function oper(fct: (s: string) => string, s: string) {
-  return fct(s)
-}
-
-console.log(oper(vertMirror, "hSgdHQ\nHnDMao\nClNNxX\niRvxxH\nbqTVvA\nwvSyRu"));
+console.log(checkCoupon('123','123','September 5, 2014','October 1, 2014'));  // true
+console.log(checkCoupon('123a','123','September 5, 2014','October 1, 2014'));  // false
