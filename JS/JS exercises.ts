@@ -1,14 +1,12 @@
 
-export function howMuchILoveYou(petals: number): string {
-  const phrase: Array<string> = [
-    'I love you', 
-    'a little', 
-    'a lot', 
-    'passionately', 
-    'madly', 
-    'not at all'
-  ];
-  return phrase[(petals - 1) % 6]
+export function bmi(weight: number, height: number): string {
+  const bmi: number = weight / Math.pow(height, 2);
+    if (bmi <= 18.5) return "Underweight"
+    else if (bmi <= 25.0) return "Normal"
+    else if (bmi <= 30.0) return "Overweight"
+    else if (bmi > 30) return "Obese"
+  
+  return 'undefined'
 }
 
-console.log(howMuchILoveYou(6));  // "not at all"
+console.log(bmi(90, 1.80));
