@@ -1,7 +1,6 @@
 
-export function checkCoupon(enteredCode: string, correctCode: string, currentDate: string, expirationDate: string): boolean {  
-  return new Date(currentDate) <= new Date(expirationDate) && enteredCode === correctCode
-}
+export const factorial = (n: number): number => {
+  return n > 1 ? n * factorial(n - 1) : 1
+};
 
-console.log(checkCoupon('123','123','September 5, 2014','October 1, 2014'));  // true
-console.log(checkCoupon('123a','123','September 5, 2014','October 1, 2014'));  // false
+console.log(factorial(5));  // 120
