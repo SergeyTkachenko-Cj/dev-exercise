@@ -1,24 +1,17 @@
 
-export function solution(roman: string): number {
+export function growingPlant(up: number, down: number, h: number): number {
 
-  const decode: any = {
-    M: 1000,
-    D: 500,
-    C: 100,
-    L: 50,
-    X: 10,
-    V: 5,
-    I: 1
-  }
+  let res: number = 0;
+  let days: number = 0;
 
-  return roman.split('') 
-              .reverse()  
-              .map(i => decode[i])
-              .reduce((acc, cur, indx, arr) => {
-                return arr[indx - 1] > cur ? acc - cur : acc + cur
-              });
+  for (let i = 0; res < h; i++) {
+    i % 2 ? res -= down : res += up;
+      days++;
+    }
+
+  return Math.ceil(days / 2) || 1
 }
 
-// console.log(solution('XXI')); // 21
-// console.log(solution('IV')); // 4
-console.log(solution('MCMXC')); // 1990
+console.log(growingPlant(100, 10, 910));  // 10
+console.log(growingPlant(10, 9, 4));  // 1
+console.log(growingPlant(43, 13, 959)); // 32
