@@ -1,36 +1,36 @@
 
 export class G964 {
 
-  public static balanceStatements = (list: string) => {
-    const regex = /([A-Z])+\s\d+\s(\d+)?\.\d+\s(B|S)/;
+  public static validation = (item: string) => {
+    const arr: Array<string> = item.split(' ');
 
-    const arr: Array<string> = list.split(',');
-    let bad: number = 0;
-    let badStr: string = '';
-    let sumBuy: any = 0;
-    let sumSell: any = 0;
-    
-    const arrFilt = arr.filter(i => {
-      if (regex.test(i)) {
-        /\sB/.test(i) ? sumBuy += +(i.match(/(\d+)?\.\d+/) || [])[0] * +(i.match(/\s\d+/) || []) : 
-                        sumSell += +(i.match(/(\d+)?\.\d+/) || [])[0] * +(i.match(/\s\d+/) || []);
-        return i.match(regex)
-      }
-      else {
-        const noSpace: string = i.replace(/^\s/, '');
-        if (!badStr.length) badStr += ' '+ noSpace + ' ;';
-        else { badStr += noSpace + ' ;' }
-        bad++;
-        return false
-      } 
-    })
-
-    let badly: string = `; Badly formed ${bad}:${badStr}`;
-
-    arr[0].length ? bad : bad = 0;
-
-    return `Buy: ${Math.round(sumBuy)} Sell: ${Math.round(sumSell)}${bad ? badly : ''}`
+    return arr.length == 4 &&
+           /^\d+$/.test(arr[1]) &&
+           /\./.test(arr[2]) &&
+           /B|S/.test(arr[3]) &&
+           {status: arr[3], sum: +arr[1] * +arr[2]}
   }
+
+    public static balanceStatements = (list) => {
+        const arr: Array<string> = list.split(/, /);
+      let bad: Array<string> = [];
+      let buy: number = 0;
+      let sell: number = 0;
+
+      arr.forEach(i => {
+        const itemValid = G964.validation(i);
+          if (itemValid) {
+            itemValid.status == 'B' ? buy += itemValid.sum : sell += itemValid.sum;
+          }
+          else {
+            if (i) bad.push(i);
+          }
+      });
+      
+      return `Buy: ${Math.round(buy)} Sell: ${Math.round(sell)}` 
+      + (bad.length ? `; Badly formed ${bad.length}: ${bad.join(' ;')} ;` : "")
+  
+    }
 }
 
 console.log(G964.balanceStatements("GOOG 300 542.0 B, AAPL 50 145.0 B, CSCO 250.0 29 B, GOOG 200 580.0 S"));  

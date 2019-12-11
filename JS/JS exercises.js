@@ -3,33 +3,31 @@ exports.__esModule = true;
 var G964 = /** @class */ (function () {
     function G964() {
     }
+    G964.validation = function (item) {
+        var arr = item.split(' ');
+        return arr.length == 4 &&
+            /^\d+$/.test(arr[1]) &&
+            /\./.test(arr[2]) &&
+            /B|S/.test(arr[3]) &&
+            { status: arr[3], sum: +arr[1] * +arr[2] };
+    };
     G964.balanceStatements = function (list) {
-        var regex = /([A-Z])+\s\d+\s(\d+)?\.\d+\s(B|S)/;
-        var arr = list.split(',');
-        var bad = 0;
-        var badStr = '';
-        var sumBuy = 0;
-        var sumSell = 0;
-        var arrFilt = arr.filter(function (i) {
-            if (regex.test(i)) {
-                /\sB/.test(i) ? sumBuy += +(i.match(/(\d+)?\.\d+/) || [])[0] * +(i.match(/\s\d+/) || []) :
-                    sumSell += +(i.match(/(\d+)?\.\d+/) || [])[0] * +(i.match(/\s\d+/) || []);
-                return i.match(regex);
+        var arr = list.split(/, /);
+        var bad = [];
+        var buy = 0;
+        var sell = 0;
+        arr.forEach(function (i) {
+            var itemValid = G964.validation(i);
+            if (itemValid) {
+                itemValid.status == 'B' ? buy += itemValid.sum : sell += itemValid.sum;
             }
             else {
-                var noSpace = i.replace(/^\s/, '');
-                if (!badStr.length)
-                    badStr += ' ' + noSpace + ' ;';
-                else {
-                    badStr += noSpace + ' ;';
-                }
-                bad++;
-                return false;
+                if (i)
+                    bad.push(i);
             }
         });
-        var badly = "; Badly formed " + bad + ":" + badStr;
-        arr[0].length ? bad : bad = 0;
-        return "Buy: " + Math.round(sumBuy) + " Sell: " + Math.round(sumSell) + (bad ? badly : '');
+        return "Buy: " + Math.round(buy) + " Sell: " + Math.round(sell)
+            + (bad.length ? "; Badly formed " + bad.length + ": " + bad.join(' ;') + " ;" : "");
     };
     return G964;
 }());
