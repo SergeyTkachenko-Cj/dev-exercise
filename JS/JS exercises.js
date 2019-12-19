@@ -3,27 +3,15 @@ exports.__esModule = true;
 var G964 = /** @class */ (function () {
     function G964() {
     }
-    G964.stockList = function (listOfArt, listOfCat) {
-        var listStr = listOfArt.join(',');
-        var resArr = listOfCat.map(function (i) {
-            var re = new RegExp("\\b(" + i + ")\\w+\\s(\\d+)", "g");
-            var numb = 0;
-            var execute = function () {
-                var reCheck = re.exec(listStr);
-                if (reCheck) {
-                    numb += +reCheck[2];
-                    execute();
-                }
-            };
-            execute();
-            return "(" + i + " : " + numb + ")";
-        });
-        return !listStr.length ? '' : resArr.join(' - ');
+    G964.fromNb2Str = function (n, sys) {
+        var checkPair = function (mod) { return sys.filter(function (i) { return i % mod === 0; }).length < 2; };
+        var checkProd = function (num) { return sys.reduce(function (acc, cur) { return acc * cur; }) > num; };
+        var moduli = function (num) { return sys.map(function (i) { return "-" + num % i + "-"; }).join(''); };
+        return checkProd(n) && checkPair(2) && checkPair(3) ? moduli(n) : 'Not applicable';
     };
     return G964;
 }());
 exports.G964 = G964;
-console.log(G964.stockList(["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"], ["A", "B", "C", "D"]));
-//  "(A : 0) - (B : 1290) - (C : 515) - (D : 600)"
-// console.log(G964.stockList([], ["A", "B", "C", "D"]));
-//  ''
+console.log(G964.fromNb2Str(779, [8, 7, 5, 3])); // "-3--2--4--2-"
+// console.log(G964.fromNb2Str(15, [8,6,5])); // "Not applicable"
+// console.log(G964.fromNb2Str(187, [8, 7, 5, 3]));  // "-3--5--2--1-"  
