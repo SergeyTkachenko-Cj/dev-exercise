@@ -1,11 +1,9 @@
 "use strict";
 exports.__esModule = true;
-function meeting(s) {
-    return s.split(';')
-        .map(function (i) { return "(" + i.toUpperCase().split(':').reverse().join(', ') + ")"; })
-        .sort()
-        .join('');
+function comp(a1, a2) {
+    return a1 && a2 ? a1.map(function (i) { return i * i; }).sort().toString() === a2.sort().toString() : false;
 }
-exports.meeting = meeting;
-console.log(meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"));
-// console.log(meeting("Alexis:Wahl;John:Bell;Victoria:Schwarz;Abba:Dorny;Grace:Meta;Ann:Arno;Madison:STAN;Alex:Cornwell;Lewis:Kern;Megan:Stan;Alex:Korn"));
+exports.comp = comp;
+console.log(comp([121, 144, 19, 161, 19, 144, 19, 11], [121, 14641, 20736, 361, 25921, 361, 20736, 361]));
+console.log(comp(null, null));
+console.log(comp([], []));
