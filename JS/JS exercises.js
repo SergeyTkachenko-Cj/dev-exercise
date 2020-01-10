@@ -1,14 +1,7 @@
 "use strict";
 exports.__esModule = true;
-function cleanString(s) {
-    var res = [];
-    s.split('').forEach(function (element) {
-        element.match(/#/) ? res.splice(res.length - 1) : res.push(element);
-    });
-    return res.join('') || '';
-}
-exports.cleanString = cleanString;
-console.log(cleanString('abc#d##c')); // 'ac'
-console.log(cleanString('abc##d#####')); // ''
-console.log(cleanString('####d##c#')); // ''
-console.log(cleanString('a#bc#d')); // 'bd'
+exports.digitalRoot = function (n) {
+    return n < 10 ? n : exports.digitalRoot(eval(n.toString().split('').join('+')));
+};
+console.log(exports.digitalRoot(16)); // 7
+console.log(exports.digitalRoot(456)); // 6

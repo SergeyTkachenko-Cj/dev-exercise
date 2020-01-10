@@ -1,15 +1,7 @@
 
-export function cleanString(s: string): string {
-  const res: Array<string> = [];
+export const digitalRoot = (n:number):number => {
+  return n < 10 ? n : digitalRoot(eval(n.toString().split('').join('+')))
+};
 
-  s.split('').forEach(element => {
-    element.match(/#/) ? res.splice(res.length - 1) : res.push(element)
-  });
-
-  return res.join('') || ''
-}
-
-console.log(cleanString('abc#d##c')); // 'ac'
-console.log(cleanString('abc##d#####')); // ''
-console.log(cleanString('####d##c#')); // ''
-console.log(cleanString('a#bc#d')); // 'bd'
+console.log(digitalRoot(16)); // 7
+console.log(digitalRoot(456)); // 6
