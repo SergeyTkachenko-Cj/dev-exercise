@@ -1,14 +1,14 @@
 "use strict";
 exports.__esModule = true;
-function isValidWalk(walk) {
-    var comp = function (arg) {
-        return arg.map(function (i) { return (walk.toString().match(i) || '').length; })
-            .reduce(function (acc, cur) { return acc - cur ? 0 : acc + cur; });
-    };
-    return comp([/n/g, /s/g]) + comp([/e/g, /w/g]) === 10;
+function cleanString(s) {
+    var res = [];
+    s.split('').forEach(function (element) {
+        element.match(/#/) ? res.splice(res.length - 1) : res.push(element);
+    });
+    return res.join('') || '';
 }
-exports.isValidWalk = isValidWalk;
-console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's'])); // true
-// console.log(isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e'])); // false
-// console.log(isValidWalk(['w'])); // false
-// console.log(isValidWalk(['n','n','n','s','n','s','n','s','n','s']));  // false
+exports.cleanString = cleanString;
+console.log(cleanString('abc#d##c')); // 'ac'
+console.log(cleanString('abc##d#####')); // ''
+console.log(cleanString('####d##c#')); // ''
+console.log(cleanString('a#bc#d')); // 'bd'
