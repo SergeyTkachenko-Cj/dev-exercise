@@ -1,7 +1,48 @@
+export function getW(height: number): string {
+  
+  const arr: Array<string> = [];
+  const str: string = '*';
+  const empt_str: string = ' ';
+  let space: number = (height + (height - 1)) - 2;
 
-export const digitalRoot = (n:number):number => {
-  return n < 10 ? n : digitalRoot(eval(n.toString().split('').join('+')))
-};
+  if (space < 0) return ''
 
-console.log(digitalRoot(16)); // 7
-console.log(digitalRoot(456)); // 6
+    for (let i = 0; i < height; i++) {
+      switch (i) {
+        case 0:
+          arr.push(`${empt_str.repeat(i)}${str}${(empt_str.repeat(space) + str).repeat(2)}${empt_str.repeat(i)}`);
+          break;
+        case height - 1:
+          arr.push(`${empt_str.repeat(i)}${str}${(empt_str.repeat(space) + str).repeat(1)}${empt_str.repeat(i)}`);
+          break;
+        default:
+          arr.push(`${empt_str.repeat(i) + str + empt_str.repeat(space) + str + empt_str.repeat(i + (i - 1)) + str + empt_str.repeat(space) + str}${empt_str.repeat(i)}`);
+      }
+      space = space > 1 ? space - 2 : (height + (height - 1)) - 2;
+    }
+
+  return arr.join('\n')
+}
+
+console.log(getW(5));
+
+//      2
+// [
+//   "* * *", 
+//   " * * "
+// ]
+
+//      3
+// [
+//   "*   *   *", 
+//   " * * * * ", 
+//   "  *   *  "
+// ]
+
+//      4
+// [
+//   "*     *     *", 
+//   " *   * *   * ", 
+//   "  * *   * *  ",
+//   "   *     *   "
+// ]
