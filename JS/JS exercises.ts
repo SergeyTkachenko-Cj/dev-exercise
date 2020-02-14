@@ -1,18 +1,8 @@
-export {};
-
-declare global {
-  interface String {
-    eightBitNumber(): boolean;
-  }
+export function countLettersAndDigits(input: string): number {
+  return input.replace(/[^\w]|_/g, '').length
 }
 
-String.prototype.eightBitNumber = function(): boolean {
-  return +this >= 0 && 
-         +this <= 255 && 
-         this.length === (+this).toString().length
-}
-
-console.log("".eightBitNumber());   // false
-console.log("0".eightBitNumber());  // true
-console.log("00".eightBitNumber());  // false
-console.log("197".eightBitNumber());  // true
+console.log(countLettersAndDigits("hel2!lo"));   // 6
+console.log(countLettersAndDigits("n!!ice!!123"));  // 7
+console.log(countLettersAndDigits("1"));  // 1
+console.log(countLettersAndDigits("?"));  // 0
