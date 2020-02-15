@@ -1,8 +1,8 @@
-export function countLettersAndDigits(input: string): number {
-  return input.replace(/[^\w]|_/g, '').length
+export function oddOrEven(array: number[]): string {
+  return (array.reduce((acc, cur) => acc + cur, 0) % 2) ? 'odd' : 'even'
 }
 
-console.log(countLettersAndDigits("hel2!lo"));   // 6
-console.log(countLettersAndDigits("n!!ice!!123"));  // 7
-console.log(countLettersAndDigits("1"));  // 1
-console.log(countLettersAndDigits("?"));  // 0
+console.log(oddOrEven([0])); // 'even'
+console.log(oddOrEven([1])); // 'odd'
+console.log(oddOrEven([0, -1, -5])); // 'even'
+console.log(oddOrEven([])); // 'even'
