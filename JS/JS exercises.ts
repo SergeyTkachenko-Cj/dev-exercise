@@ -1,8 +1,6 @@
-export function oddOrEven(array: number[]): string {
-  return (array.reduce((acc, cur) => acc + cur, 0) % 2) ? 'odd' : 'even'
+export function noOdds(values: number[]): number[] {
+  return values.filter(i => !(i % 2))
 }
 
-console.log(oddOrEven([0])); // 'even'
-console.log(oddOrEven([1])); // 'odd'
-console.log(oddOrEven([0, -1, -5])); // 'even'
-console.log(oddOrEven([])); // 'even'
+console.log(noOdds([0,1])); // [0]
+console.log(noOdds([0,1,2,3])); // [0,2]
